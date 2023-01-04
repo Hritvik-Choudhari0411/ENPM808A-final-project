@@ -21,6 +21,9 @@ pip install matplotlib
 ## Problem Statement
 - The car like robot senses its environment using a 1D LIDAR sensor. The data recorded is documented in the form of “.CSV” files. The LIDAR data is read and tabulated as columns of the csv file, total 1080 columns named from ‘Laser 1’ to ‘Laser 1080’ where each column is a 0.25-degree scan of the LIDAR. The final goal, local goal and robot’s current position and pose information (which are spatially represented by 3D Cartesian coordinated and quaternion) is provided in subsequent columns. The last two columns consist of target variables linear velocities and the angular velocities of the robot. The data provided is captured from 3 different sets namely “Corridor”, “Open_box” where the robot is tested under different conditions to make learning more general. The file “special” contains high instances of some special maneuvers such as backing up.
 
+<p align="center">
+<img src="https://github.com/Hritvik-Choudhari0411/ENPM808A-final-project/blob/main/Images/Demo.png" width="500" height="400"/>
+</p>
 
 ### Step 1 (Data pre-processing & Feature Selection)
 - Data preprocessing for the input is done to reduce noise and computation time.
@@ -41,7 +44,9 @@ results. We combine 20 columns of the LIDAR data into one by taking their mean w
  • Best alpha- 0.01 <br />
  • Best learning rate- adaptive <br />
 ###### Results:
-- 
+<p align="center">
+<img src="https://github.com/Hritvik-Choudhari0411/ENPM808A-final-project/blob/main/Images/Picture1.jpg" width="500" height="400"/>
+</p>
 
 #### Support Vector Machines (SVM):
 ###### Hyperparameters:
@@ -56,7 +61,9 @@ results. We combine 20 columns of the LIDAR data into one by taking their mean w
  • Best kernel- rbf <br />
 
 ###### Results:
-- 
+<p align="center">
+<img src="https://github.com/Hritvik-Choudhari0411/ENPM808A-final-project/blob/main/Images/Picture2.jpg" width="500" height="400"/>
+</p>
 
 #### Neural Network:
 ###### Hyperparameters:
@@ -73,13 +80,19 @@ results. We combine 20 columns of the LIDAR data into one by taking their mean w
 •	Best hidden layer size- (77,77,77) <br />
 
 ###### Results:
-- 
+<p align="center">
+<img src="https://github.com/Hritvik-Choudhari0411/ENPM808A-final-project/blob/main/Images/Picture3.jpg" width="500" height="400"/>
+</p>
 
 ### Step 3 (Model selection and Testing)
 - From the cross-validation score results obtained we have selected SVM as our optimum model with optimal hyper-parameters obtained during training, as it provided the best cross validation score (0.72) among the three. Now we deploy it for testing over the test dataset where similar procedure for data preprocessing is done and then fed to the model. We randomly shuffled the training data and took 800000 data points for the model testing. The scoring parameter used to find E_test is “r_2”. <br />
 
 • E_test: 0.073 <br />
 • E_out:  0.080 <br />
+
+<p align="center">
+<img src="https://github.com/Hritvik-Choudhari0411/ENPM808A-final-project/blob/main/Images/Picture4.png" width="300" height="200"/>
+</p>
 
 ### Conclusion 
 - Hence, we successfully compared 3 different models, decided the better model, and trained a SVM model for predicting the linear and angular velocities of the test data with minimal E_in. This model can be used for predicting future values of linear velocity and angular velocity albeit with lower E_out.
